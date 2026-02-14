@@ -24,15 +24,6 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white relative px-4 md:px-10">
       <BackgroundMusic />
-      {/* Dev Skip Button */}
-      {!showValentinesProposal && (
-        <button
-          onClick={handleShowProposal}
-          className="absolute top-4 right-4 px-3 py-1 text-xs bg-gray-300 text-black rounded hover:bg-gray-400 transition"
-        >
-          Skip Game
-        </button>
-      )}
       {!showValentinesProposal ? (
         <motion.div
           initial={{ opacity: 1 }}
