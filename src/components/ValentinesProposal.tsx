@@ -64,7 +64,7 @@ export default function ValentinesProposal() {
   };
 
   useEffect(() => {
-    if (step < 2) {
+    if (step < 3) {
       // Change step after 5 seconds
       const timer = setTimeout(() => {
         setStep((prevStep) => prevStep + 1);
@@ -74,46 +74,66 @@ export default function ValentinesProposal() {
     }
   }, [step]);
 
+  // (intentionally not stopping background music here)
+
   const handleYesClick = () => {
     setShowFireworks(true);
-    setStep(3);
+    setStep(4);
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-full">
       <AnimatePresence mode="wait">
         {step === 0 && (
-          <motion.h2
+          <motion.div
             key="step-0"
-            className={`text-4xl font-semibold mb-4 ${playfairDisplay.className}`}
+            className="fixed inset-0 bg-black flex items-center justify-center"
             transition={{ duration: 1 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            Congratulations! You have completed the game.
-          </motion.h2>
+            <h2 className={`text-4xl font-semibold text-white text-center ${playfairDisplay.className}`}>
+              YEY, selamat telah menamatkan gamenya! 🎉
+            </h2>
+          </motion.div>
         )}
         {step === 1 && (
-          <motion.h2
+          <motion.div
             key="step-1"
-            className={`text-4xl font-semibold mb-4 ${playfairDisplay.className}`}
+            className="fixed inset-0 bg-black flex items-center justify-center"
             transition={{ duration: 3 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            I have a surprise for you!
-          </motion.h2>
+            <h2 className={`text-4xl font-semibold text-white text-center ${playfairDisplay.className}`}>
+              BETA PUNYA HADIAH BUAT LUU!!! 🥳
+            </h2>
+          </motion.div>
         )}
         {step === 2 && (
           <motion.div
             key="step-2"
+            className="fixed inset-0 bg-black flex items-center justify-center"
             transition={{ duration: 3 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center"
+          >
+            <h2 className={`text-4xl font-semibold text-white text-center ${playfairDisplay.className}`}>
+              tapi sebelum itu JAWAB dulu
+            </h2>
+          </motion.div>
+        )}
+        {step === 3 && (
+          <motion.div
+            key="step-3"
+            transition={{ duration: 3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black flex flex-col items-center justify-center"
           >
             {/* Image Grid Background */}
             <div className="absolute inset-0 grid grid-cols-6 opacity-10">
@@ -130,25 +150,37 @@ export default function ValentinesProposal() {
             </div>
 
             <h2
-              className={`text-5xl font-semibold mb-8 ${playfairDisplay.className}`}
+              className={`text-5xl font-semibold mb-8 text-white drop-shadow-lg text-center ${playfairDisplay.className}`}
+              style={{
+                textShadow: "0 0 20px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6)",
+              }}
             >
-              Will you be my Valentine?
+              BE MY 
+            </h2>
+            <h2
+              className={`text-5xl font-semibold mb-8 text-white drop-shadow-lg text-center ${playfairDisplay.className}`}
+              style={{
+                textShadow: "0 0 20px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.6)",
+              }}
+            >
+              VALENTINEE!!!!!!
             </h2>
             <Image
-              src="/sad_hamster.png"
+              src="/sad_hamster.gif"
               alt="Sad Hamster"
               width={200}
               height={200}
+              unoptimized
             />
             <div className="flex space-x-4 mt-10">
               <button
-                className="px-6 py-2 text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl hover:from-pink-600 hover:to-rose-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="px-6 py-2 text-lg font-semibold text-black bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl hover:from-pink-600 hover:to-rose-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                 onClick={handleYesClick}
               >
-                Yes, I will! 🥰
+                MAUU 🥰
               </button>
               <button
-                className="px-6 py-2 text-lg font-semibold text-white bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-95 transition-all duration-300 shadow-lg"
+                className="px-6 py-2 text-lg font-semibold text-black bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-95 transition-all duration-300 shadow-lg"
                 style={
                   position
                     ? {
@@ -160,22 +192,22 @@ export default function ValentinesProposal() {
                 }
                 onMouseEnter={() => setPosition(getRandomPosition())}
               >
-                No, I won&apos;t 😢
+                TYDAC 😢
               </button>
             </div>
           </motion.div>
         )}
-        {step === 3 && (
+        {step === 4 && (
           <motion.div
-            key="step-3"
-            className={`text-4xl font-semibold mb-4 flex flex-col justify-center items-center ${playfairDisplay.className}`}
+            key="step-4"
+            className={`fixed inset-0 bg-black text-4xl font-semibold mb-4 flex flex-col justify-center items-center text-white text-center ${playfairDisplay.className}`}
             transition={{ duration: 1 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            Thank you for accepting, I love you! 💕
-            <p className="text-sm mt-4">For more information, write me!!! 💌</p>
+            Happy Valentine 💕
+            <p className="text-sm mt-4 text-center">hehe gimana hadiah bunganya 💌</p>
             <Image
               src="/hamster_jumping.gif"
               alt="Hamster Feliz"
